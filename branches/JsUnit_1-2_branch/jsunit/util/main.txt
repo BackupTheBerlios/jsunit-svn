@@ -1,0 +1,73 @@
+/*
+JsUnit - a JUnit port for JavaScript
+Copyright (C) 1999,2000,2001,2002 Joerg Schaible
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation in version 2 of the License.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+Test suites built with JsUnit are derivative works derived from tested 
+classes and functions in their production; they are not affected by this 
+license.
+*/
+
+/*! 
+
+\mainpage JsUnit
+
+\section description Description
+
+<P>JsUnit is a simple framework to write repeatable tests in JavaScript. It is
+an instance of the xUnit architecture for <a
+href="http://www.xprogramming.com/software.htm">unit testing frameworks</a>.
+JsUnit is a port of <a href="http://www.junit.org">JUnit</a> 3.2 written by
+Erich Gamma and Kent Beck. It covers the core system and the examples.</P>
+
+<P>For further information follow the links at <a
+href="http://c2.com/cgi/wiki?TestingFramework">Portland Pattern Repository for
+Testing Frameworks</a> and the homepage of <a
+href="http://www.junit.org">JUnit</a>.
+
+\section overview Overview
+
+<p>\ref license of JsUnit is the \ref gnu.</p>
+
+<p>All downloads are available at the <a
+href="http://developer.berlios.de/project/filelist.php?group_id=158">download
+section</a> of the JsUnit project page. See the \ref release for specific
+information regarding the files. There is also a \ref todo and the \ref
+history available.</p>
+
+<p>You can send e-mail to <a href="mailto:joehni@mail.berlios.de">J&ouml;rg
+Schaible</a> for any question, suggestion or problem or join the <a
+href="http://groups.yahoo.com/group/jsunit/join">JsUnit mailing list</a>
+hosted by <a href="http://groups.yahoo.com/">Yahoo! Groups</a>. Please
+recognize that more than one JsUnit project exists.</p>
+
+<p>The \ref usage of JsUnit is described in the follwing sections:
+<ul>
+	<li>\ref codeConv</li>
+	<li>\ref interface</li>
+	<li>\ref writing</li>
+	<li>\ref application</li>
+	<li>\ref examples</li>
+</ul></p>
+
+<p>JsUnit supports a number of applications. See \ref compatibility for a
+reference and the different language versions.</p>
+
+<p>The \ref internal provide information about the source code comment
+convensions that can be used to build own documentation like this one.</p>
+
+<p>Last, but not least, the \ref acknowledge.</p>
+
+*/
