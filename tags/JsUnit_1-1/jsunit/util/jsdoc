@@ -1,0 +1,77 @@
+#!/bin/sh
+
+# JsUnit - a JUnit port for JavaScript
+# Copyright (C) 1999-2001 Joerg Schaible
+# 
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation in version 2 of the License.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+# 
+# Test suites built with JsUnit are derivative works derived from tested 
+# classes and functions in their production; they are not affected by this 
+# license.
+
+_DOXYGEN=`type doxygen > /dev/null 2>&1`
+if test -z "$_DOXYGEN"; then
+	if test -d /opt/doxygen/bin; then
+		PATH=$PATH:/opt/doxygen/bin
+		_DOXYGEN=YES
+	fi
+fi
+if test -z "$_DOXYGEN"; then
+	echo "doxygen not available!"
+	exit 1
+fi
+_DOT=`type dot > /dev/null 2>&1`
+if test -z "$_DOT"; then
+	if test -d /opt/graphviz/bin; then
+		HAS_DOT="YES"
+		PATH=$PATH:/opt/graphviz/bin
+	else
+		HAS_DOT="NO"
+	fi
+else
+	HAS_DOT="YES"
+fi
+OUTPUT_DIRECTORY=.
+VERSION=`cat version.cfg`
+GENERATE_HTML=YES
+GENERATE_MANE=YES
+PERL_PATH=/usr/bin/perl
+if test `uname -s | grep -ic CYGWIN` -gt 0; then
+	PERL_PATH=`cygpath -aw $PERL_PATH`
+fi
+export GENERATE_HTML GENERATE_MAN OUTPUT_DIRECTORY HAS_DOT PERL_PATH VERSION
+
+CWD=$CWD
+cd `dirname $0`/..
+rm -rf .lib/ .doc/ doc/ man/ > /dev/null 2>&1
+mkdir .lib .doc doc man
+cd lib
+for js in *.js; do 
+	../util/jsd2ccd.pl $js | sed -e 's/\(.*\)/\1/g' > ../.lib/$js
+done
+
+cd ..
+doxygen util/Doxyfile
+cp util/*.bmp doc/
+mv doc/*.html .doc/
+cd .doc
+for html in *.html; do 
+	sed -e 's,<[hH]1>JsU\(nit.*\)</[hH]1>,<H1><A class="J">J</A><A class="s">s</A><A class="U">U</A>\1</H1>,g' $html > ../doc/$html; 
+	#sed -e 's,JsUnit\([ <]\),<A class="J">J</A><A class="s">s</A><A class="U">U</A>nit\1,g' $html > ../doc/$html; 
+done
+
+cd ..
+rm -rf .lib .doc
+cd $CWD
+
